@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Midnight Apex</title><meta name="description" content="Own the night. A fast neon arcade racer for 2–4 friends. Create a private room, share the link, and race to the finish.">
+<meta name="theme-color" content="#080c18"><meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="Midnight Apex"><meta property="og:description" content="Your crew. Three laps. One winner. A private multiplayer night racer.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://midnight-apex-grid.higgsfield.app">
+<meta property="og:image" content="https://midnight-apex-grid.higgsfield.app/assets/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<canvas id="world" aria-label="Midnight Apex race circuit"></canvas>
+<div class="vignette"></div>
+<header><a class="brand" href="/" aria-label="Midnight Apex home"><span class="brand-mark">M<span>∕</span></span><span>MIDNIGHT<span class="brand-apex">APEX</span></span></a>
+<div class="header-right"><span id="connection" class="status"><i></i> READY TO RACE</span><button id="sound" class="icon-button" aria-label="Turn sound on">SOUND OFF</button><button id="settingsButton" class="icon-button" aria-label="Settings">⚙</button></div></header>
+<main id="home" class="panel">
+<div class="eyebrow"><span></span> AFTER DARK. AHEAD OF EVERYONE.</div>
+<h1>OWN<br>THE <em>NIGHT.</em></h1>
+<p class="intro">Your crew. Open roads. No second chances.<br>A neon-fueled race to the finish.</p>
+<div class="tags"><span>2–4 PLAYERS</span><span>PRIVATE ROOMS</span><span>3 LAPS</span></div>
+<div class="home-actions"><button id="create" class="primary">CREATE A ROOM <span>↗</span></button><button id="showJoin" class="secondary">JOIN A RACE</button></div>
+<button id="practice" class="text-button">Take a practice lap <span>→</span></button>
+<div class="control-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>DRIVE</span><kbd>SHIFT</kbd><span>NITRO</span></div>
+</main>
+<div id="trackCard" class="track-card"><span class="eyebrow">TONIGHT'S CIRCUIT</span><strong>NEON HARBOR <span>01</span></strong><div class="track-line"><svg viewBox="0 0 250 75"><path d="M15 45C0 5 70 0 78 24S101 73 143 50 216 5 235 24 218 73 178 67 104 72 68 58 25 75 15 45Z" /></svg></div><p>7.2 KM <span>•</span> NIGHT <span>•</span> STREET CIRCUIT</p></div>
+<footer id="footer"><span>BUILT FOR THE CHASE</span><span><i class="live-dot"></i> 60 FPS TARGET <b> / </b> KEYBOARD + TOUCH</span></footer>
+<section id="joinPanel" class="modal hidden"><div class="dialog"><button class="close" data-close="joinPanel" aria-label="Close">×</button><div class="eyebrow">GET ON THE GRID</div><h2>Join your crew.</h2><label for="roomInput">PRIVATE ROOM CODE</label><input id="roomInput" maxlength="32" autocomplete="off" placeholder="Enter room code"><button id="join" class="primary">JOIN ROOM <span>→</span></button><p class="small">Ask the host for a room code or invitation link.</p></div></section>
+<section id="lobby" class="modal hidden"><div class="dialog lobby-dialog"><div class="eyebrow">PRIVATE STARTING GRID</div><h2>Your crew is up.</h2><div class="room-box"><div><span>ROOM CODE</span><strong id="roomCode">—</strong></div><button id="copy" class="secondary">COPY INVITE ↗</button></div><label for="nameInput">YOUR DRIVER NAME</label><input id="nameInput" maxlength="16" placeholder="Driver name" autocomplete="nickname"><div id="players" class="players"></div><p id="lobbyHint" class="small">Waiting for your friends…</p><button id="start" class="primary">START RACE <span>→</span></button><button class="text-button leave">Leave room</button></div></section>
+<div id="hud" class="hidden"><div class="race-top"><div class="hud-block"><span>POSITION</span><strong id="position">1<small>/ 4</small></strong></div><div class="hud-block center"><span>NEON HARBOR</span><strong id="lap">LAP 1 <small>/ 3</small></strong></div><div class="hud-block right"><span>RACE TIME</span><strong id="timer">00:00.00</strong></div></div>
+<div id="countdown" aria-live="polite"></div><div id="raceNotice"></div><div id="leaderboard" class="leaderboard"></div><div class="speed-cluster"><div class="gear">GEAR <b id="gear">N</b></div><strong id="speed">000</strong><span>KM/H</span><div class="nitro-track"><i id="nitro"></i></div><div class="nitro-label">NITRO <span>SHIFT</span></div></div><button id="exitRace" class="race-exit">LEAVE RACE</button><div id="fps">— FPS</div>
+<div class="touch-controls"><div><button data-input="left" aria-label="Steer left">◀</button><button data-input="right" aria-label="Steer right">▶</button></div><div><button data-input="brake" class="brake">BRAKE</button><button data-input="boost" class="boost">NITRO</button></div></div></div>
+<section id="results" class="modal hidden"><div class="dialog"><div class="eyebrow">THE NIGHT HAS A WINNER</div><h2 id="resultTitle">Race complete.</h2><div id="standings"></div><button id="rematch" class="primary">BACK TO THE GRID <span>↗</span></button><button class="text-button leave">Back to home</button></div></section>
+<section id="settings" class="modal hidden"><div class="dialog"><button class="close" data-close="settings" aria-label="Close settings">×</button><div class="eyebrow">MAKE IT YOUR RACE</div><h2>Race settings.</h2><label>GRAPHICS<select id="quality"><option value="auto">Auto · balanced performance</option><option value="high">High · sharper resolution</option><option value="low">Performance · lighter graphics</option></select></label><label class="toggle"><input type="checkbox" id="autoGas" checked> Automatic acceleration</label><label class="toggle"><input type="checkbox" id="reduced"> Reduced motion effects</label><p class="small">W / ↑ accelerate · S / ↓ brake<br>A D / ← → steer · Shift / Space nitro<br>Touch controls appear on phones. Gamepad: left stick, RT gas, LT brake, A nitro.</p><p class="small">Rendering targets 60 FPS. Performance depends on your device and browser.</p></div></section>
+<div id="toast" role="status"></div><script type="module" src="/client.js"></script></body></html>

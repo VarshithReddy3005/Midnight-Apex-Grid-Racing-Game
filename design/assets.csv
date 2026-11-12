@@ -1,0 +1,4 @@
+id,role,type,description,size/ratio,style line ref,source
+skyline,race horizon and menu atmosphere,canvas,neon coastal night skyline,1800x700,midnight-neon-v1,authored procedural art; image service plan unavailable
+cars,four player car sprites,canvas,rear view sports cars,340x220,midnight-neon-v1,authored procedural art; image service plan unavailable
+cover,launch cover and social preview,png,neon cars racing at night,1800x1200,midnight-neon-v1,authored Pillow composition; image service plan unavailable
